@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.5-SNAPSHOT'
+    id 'fabric-loom' version '1.10-SNAPSHOT'
 }
 
 group = 'com.example'
@@ -11,10 +11,10 @@ repositories {
 }
 
 dependencies {
-    minecraft 'com.mojang:minecraft:1.20.1'
-    mappings 'net.fabricmc:yarn:1.20.1+build.10:v2'
-    modImplementation 'net.fabricmc:fabric-loader:0.14.21'
-    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.91.3+1.20.1'
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
 
 loom {
@@ -24,5 +24,17 @@ loom {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+task buildJar(type: Jar) {
+    from sourceSets.main.output
+    archiveFileName = 'angel-demon-mod-${version}+1.21.jar'
+    manifest {
+        attributes(
+            'Mod-Id': 'angel-demon-mod',
+            'Mod-Version': version,
+            'Fabric-Loom-Version': '1.10-SNAPSHOT'
+        )
     }
 }
