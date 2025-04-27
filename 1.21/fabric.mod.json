@@ -1,0 +1,20 @@
+{
+    "schemaVersion": 1,
+    "id": "dashabilitymod",
+    "version": "1.0.0",
+    "name": "DashAbility Mod",
+    "description": "Jump+RightClick for /dashability, R for /ability!",
+    "authors": ["yourname"],
+    "contact": {},
+    "license": "MIT",
+    "environment": "client",
+    "entrypoints": {
+      "client": ["com.example.dashabilitymod.DashAbilityMod"]
+    },
+    "depends": {
+      "fabricloader": ">=0.14.0",
+      "fabric": "*",
+      "minecraft": "1.20.1"
+    }
+  }
+  
