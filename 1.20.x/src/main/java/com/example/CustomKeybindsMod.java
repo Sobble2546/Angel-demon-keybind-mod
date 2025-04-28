@@ -17,18 +17,18 @@ public class CustomKeybindsMod implements ClientModInitializer {
     public void onInitializeClient() {
         // Register the 'R' key for /ability
         abilityKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-            "key.customkeybinds.ability",
+            "key.logicalsmp.ability",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_R,
-            "category.customkeybinds.general"
+            "category.logicalsmp.keybinds"
         ));
         
         // Register Right Alt for /dashability instead of Space+Right Click
         dashabilityKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-            "key.customkeybinds.dashability",
+            "key.logicalsmp.dashability",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_RIGHT_ALT,  // Right Alt key
-            "category.customkeybinds.general"
+            "category.logicalsmp.keybinds"
         ));
         
         // Register tick event to check keybinds
