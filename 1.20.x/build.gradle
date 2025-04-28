@@ -1,0 +1,47 @@
+plugins {
+    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+repositories {
+    mavenCentral()
+    // Also add Fabric repository
+    maven { url 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    // Minecraft and Fabric
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    
+    // Fabric API - Make sure this is included and properly referenced
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    
+    // Alternatively, you can use individual Fabric API modules if needed:
+    // modImplementation "net.fabricmc.fabric-api:fabric-api-base:${project.fabric_version}"
+    // modImplementation "net.fabricmc.fabric-api:fabric-key-binding-api-v1:${project.fabric_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    filteringCharset "UTF-8"
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+java {
+    withSourcesJar()
+}
